@@ -1,0 +1,277 @@
+#! /bin/bash
+clear
+echo "1.=> attack wireless"
+echo "2.=> internet"
+echo "3.=> Social engineering tool"
+echo "4.=> ataques de contraceñas"
+echo "5.=> Aplicaciones web"
+echo "6.=> herramienta de explotacion"
+echo "7.=> herramientas de utilida"
+read -p "=> " opc
+case $opc in #///////////////////////////////////////////////////////(1)
+1) echo "1.aircrack-ng"
+   echo "2.wifiphisher"
+   echo "3.xplico"
+   echo "4.fake ap"
+   read -p "=> " use
+case $use in #////////////////////////////////////////////////////////(2)
+1)
+#aqui falta mas codigo
+echo "lo hare mas tarde" ;;
+2) echo "1.informacion sobre la herramienta"
+   echo "2.install"
+read -p "=> " buenaventura
+case $buenaventura in #////////////////////////////////////////////////(3)
+1)
+   echo "wifiphisher es una herramienta muy buena puede ver mas opciones aqui: https://github.com/wifiphisher/wifiphisher"
+   echo "para utilizar esta herramienta vamos a ocupar 2 adaptadore de wifi muy caro"
+   echo "si la quiera descarga a qui te la dejo pero no se si te sirva" ;;
+2) cd /root/ && mkdir github && cd github && git clone https://github.com/wifiphisher/wifiphisher.git
+   echo "la herramienta ya se instalo" ;;
+*) echo "a introducido un numero incorrecto"
+esac ;;
+3) echo "1.=> informacion sobre la herramienta"
+   echo "2.=> install"
+read -p "=> " opls
+case $opls in
+1) echo "esta herramienta sirve para catura datos de una red es mejor usarla cuando esta asiendo fake ap para saver ma de ella escribo su nombre --help " ;;
+2) sudo bash -c 'echo "deb http://repo.xplico.org/ $(lsb_release -s -c) main" >> /etc/apt/sources.list'
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 791C25CE
+sudo apt-get update
+sudo apt-get install xplico 
+service apache2 start 
+service xplico start
+echo "ya se instalo la herramienta abre tu navegador y escrive lo siguiente (localhost:9850)" ;; 
+*) echo "escogiste mal"
+esac ;;
+4) read -p "introduce tu targeta de wifi: " wla
+airmon-ng start $wla
+read -p "haora introduce el nuevo nobre de tu targeta de red: " plg
+read -p "introduce el nombre que va tener fake ap: " nomb
+airbase-ng --essid $nomb $plg
+brctl addbr mitm
+brctl addif mitm at0
+brctl addif mitm eth0
+ifconfig at0 up
+ifconfig mitm up
+dhclient mitm ;;
+*) echo "introducio mal" ;;
+esac ;;
+2) echo "1.=> TOR"
+   echo "2.=> hexchat"
+   echo "3.=> youtube-dl"
+   echo "4.=> onioff"
+read -p "=> " opc
+case $opc in #///////////////////////////////////////////////////////////(4)
+1) read -p "ya tienes instalado tor (yes/no): " sius
+if [ "$sius" == "no" ]; then
+  apt install tor
+  clear
+  read -p "introduce tu sistema operativo(x32/x64): "  system
+  if [ "$system" == "x64" ]; then
+     wget https://www.torproject.org/dist/torbrowser//7.5.6/tor-browser-linux64-7.5.6_es-ES.tar.xz
+  elif [ "$system" == "x32" ]; then
+     wget https://www.torproject.org/dist/torbrowser//7.5.6/tor-browser-linux32-7.5.6_es-ES.tar.xz
+  else 
+       echo "eso no es un sistema operativo"
+   fi
+elif [ "$sius" == "yes" ]; then
+       echo "si ya tienes instalado tor entoces vete de aqui jajj"
+else 
+       echo "no escojio nigunas de las opciones"
+fi
+tar "aqui falta un descompresor" ;;
+#aqui falta codigo
+2)
+apt install tor 
+apt install hexchat
+echo "ya se instalo para ver como funciona visita mi sitio web" ;;
+3) echo "1.=> informacion sobre la herramienta"
+   echo "2.=> install"
+read -p "=> " pca
+case $pca in #//////////////////////////////////////////////////////////////(5)
+1) echo "esta herramienta se encarga de descarga videos musica onlai"
+   echo "tambien tiene muchas configuraciones por ejemplo el tamaño del video la resolucion etc.."
+   echo "espero que la descargue y descargamos algunas video de xxnx jajajaj"  ;;
+2)
+  apt install youtube-dl ;;
+esac ;;
+4) echo "1.=> informacion sobre la herramienta"
+   echo "2.=> install"
+read -p "=> " tel
+case $tel in #//////////////////////////////////////////////////////////////////(6)
+1) echo "esta herramienta utiliza tor y sirve para verificar si una web de la tor se encuentra (ativa) o (destivadqa)" ;;
+
+2) cd /root && mkdir github && git clone https://github.com/k4m4/onioff.git && cd onioff && pip3 install -r requirements.txt && pip3 install requirements.txt && python3 onioff.py
+   echo "la herramienta se ha instalado correcta mente para executarla escribe el siguente comando (python3 onioff.py [url]" ;;
+*) echo "escogio mal " ;;
+esac ;; 
+*) echo "hay un herro no save los numeros ajaj" ;;
+esac ;;
+3) echo "1.=> SocialFish"
+read -p "=> " olls
+case $olls in #////////////////////////////////////////////////////////////////////(7)
+1)
+echo "1.=> infomacion sobre la herraminta"
+echo "2.=> install"
+read -p "=> " opc
+case $opc in #///////////////////////////////////////////////////////////////////////(8)
+1)
+echo "SocialFish es una herramienta para la igeneria social"
+echo "con esta herraminta podras aser attackes de phishin fuera de la red local"
+echo "porque utiliza[ngrok] y es muy buena espero que la descargue y robamos algunos facebook o twitter porai ono" 
+ 
+echo "mira tu informacion" ;;
+2) 
+mkdir github
+clear
+cd github && git clone https://github.com/UndeadSec/SocialFish.git
+sudo apt-get install python-pip -y
+cd SocialFish && sudo pip3 install -r requirements.txt
+echo "ya tiene instalado SociaFish solo dentra ala carpeta y executalocon (python3 SocialFinsh.py)"
+echo "" ;;
+*) echo "a escogido mal"
+esac ;;
+*) echo "escogio mal bobo"
+esac ;;
+4) echo "1.CUPP"
+   echo "2.crunch"
+read -p "=> " sac
+case $sac in #///////////////////////////////////////////////////////////////////////////////////(9)
+1) read -p "ya tienes instalado cupp (yes/no): " cupp
+if [ "$cupp" == "no" ]; then
+   cd /root/ && mkdir github && cd github && git clone https://github.com/Mebus/cupp.git  
+   clear
+   read -p "la herramienta ya se instalo la quiere abrir (yes/no): " abir
+   if [ "$abir" == "yes" ]; then
+      cd /root/github/cupp/ && chmod +x cupp.py && ./cupp.py -i
+   else
+         if [ "$abir" == "no" ]; then
+               echo "executa la herramienta con (./cupp.py)" 
+   fi
+   fi
+elif [ "$cupp" == "yes" ]; then
+     echo "si ya tiene la herramienta entonce porque esta aqui ?? vete "
+else 
+    echo "a escojido mal "
+fi ;;
+2) echo "para utilizar esta herramienta se utiliza con los sigiente para metros"
+   echo "crunch 10 10 -t jaider%%%% 1234567890"
+   echo "crunch 9 9 -t %%%%% 1234567890 etc..."
+   echo ""
+   echo "hay muchas forma para utlizarla y si la quieres utiliza con un programa solo haces un tunel y listo"  
+   read -p "introduce cuanto caratere va enpesar letras quiere que lleve: " hes
+   read -p "cuantos carateres introducio??: " crar
+   read -p "introduce la ruta donde seva a guarda el diccionario y el nombre: " ruta 
+   crunch $crar $crar -t $hes 1234567890 > $ruta 
+echo "" ;;
+*) echo "no escojio bien bruto tenia que ser" ;;
+esac ;;
+5) echo "1.=> Slowdoris"
+   echo "2.=> sqlmap"
+read -p "=> " carr
+case $carr in  #///////////////////////////////////////////////////////////////////////////////(10)
+1) echo "1.=> informacion sobre la herramienta"
+   echo "2.=> install"
+read -p "=> " lass
+case $lass in #///////////////////////////////////////////////////////////////////////////////////(11)
+1) echo "esta herramienta es muy nesesaria para poder tunbar servicio web y cosas asi para ver como funciona ve el projecto README.md "
+;;
+2) cd /root/ && mkdir github && cd github && git clone https://github.com/gkbrk/slowloris.git
+ echo "la herraminta se instalo correcta mente" ;;
+*) echo "·" ;;
+esac ;;
+2) echo "1.=> informacion sobre la herraminta"
+   echo "2.=> install"
+read -p "=> " calls
+
+case $calls in #/////////////////////////////////////////////////////////////////////////////////////(12)
+1) echo "esta herramienta ase ataque a sql esta de crido cuando setrata de robar datos de web para ver como funciona esta herramienta puedes colocar lo siguiente (python3 aqlmap.py -u [url]"
+;;
+2) cd /root/ && mkdir github && cd github && git clone https://github.com/sqlmapproject/sqlmap.git
+echo "la herramienta ya se instalo executala con el comando (python3 msqlmap.py)" ;;
+*) echo "()oo()" ;;
+esac ;;
+#aqui va el termino de case $carr
+*) echo "escogio mal" ;;
+esac ;; 
+6) echo "1.=> thezoo"
+   echo "2.=> Brutal"
+   echo "3.=> AutoSploit"
+   echo "4.=> backdoor-apk"
+   echo "5.=> nps_payload"
+read -p "=> " mat
+case $mat in
+1) echo "1=> informacion sobre la herramienta"
+   echo "2.=> install"
+read -p "=> " wla
+case $wla in
+1) echo "esta herraminta solo teda una varieda de malware para ver su codigo y para conpilarlo si quieres hay muchoos malware espero que la descage" ;;
+2) git clone https://github.com/ytisf/theZoo.git
+   cd /root/ && mkdir github && cd github && pip3 install requirements.txt && pip install requirements.txt 
+   echo "ya se instalo la herramienta" ;;
+*) echo "escojio mal"
+esac ;;
+2) echo "1.=> informacion sobre la herramita"
+   echo "2.=> install"
+read -p "=> " lsa
+case $lsa in
+1) echo "esta herramienta te jenera exploit y nucho mas dele un pistaso y ve " ;;
+2) git clone https://github.com/Screetsec/Brutal.git 
+   echo "la herraminta ya se instalo" ;;
+*) echo "vuelve a esscojer la opcion"
+esac ;;
+3) echo "1.=> informacion sobre la herramienta"
+   echo "2.=> install"
+read -p "=> " ol
+case $ol in
+1) echo "esta herramienta esta utilizada para hacer ataque de shodan y mucho mas " ;;
+2) cd /root/ && mkdir github && cd github && git clone https://github.com/NullArray/AutoSploit.git && chmod +x install.sh && ./install.sh && pip2 install -r requirements.txt
+echo "se instalo :)" ;;
+*) echo "escojio mal las opciones" ;;
+esac ;;
+4) echo "1.=> informacion sobre la herramienta"
+   echo "2.=> install"
+read -p "=> " kls
+case $kls in
+1) echo "comoven el nombre ya creo que saven para que sirve entonces" ;;
+2) cd /root/ && mkdir github && cd guthub && git clone https://github.com/dana-at-cp/backdoor-apk.git
+echo "listo" ;;
+*) echo "malamlamalmal" ;;
+esac ;;
+5) echo "1.=> informacion sobre la herramienta"
+   echo "2.=> install"
+read -p "=> " mau
+case $mau in
+1) echo "esta herramienta sirve para crear exploit en usb y utiliza una libreria de arduino esta de chido" ;;
+2) cd /root/ && mkdir github && cd github && git clone https://github.com/trustedsec/nps_payload.git && pip install requirements.txt
+apt-get install samba 
+service smbd restart
+echo "" ;;
+*) echo "escogio mal la opcions"
+esac ;;
+*) echo "ese numero no existe"
+esac ;;
+#case
+7) echo "1.=> quemar iso en cd" 
+   echo "2.=> quemar iso de otra manera en cd"
+   echo "3.=> quemar iso en usb"
+read -p "=> " oc
+case $oc in
+1)apt install brasero
+brasero
+echo "la herramienta ya se instalo la puedes ver en el menu"
+;;
+2) apt install acetoneiso
+acetoineiso
+echo "la herramienta ya se instalo la puedes ver en el menu" ;;
+3) lsblk
+read -p "introdusca la direcion de tu usb ejemplo(/dev/sdb/): " ls4
+read -p "introdusca donde se incuentra el iso: " l3
+read -p "introdusca cuanta cantida de memoria le das ejemplo(4M,5M): " ls
+sudo dd bs=$ls if=$l3 of=$ls4 && sync
+echo "ya tienes tu usb lista" ;;
+*) echo "a escogido mal pouto coño" ;;
+esac ;;
+*) echo "escogiste mal al principio esta mal" ;;
+esac
